@@ -6,11 +6,19 @@
   "name": "taskmanager",
   "version": "1.0.0",
   "app": "app.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "��#\u0000 \u0000t\u0000a\u0000s\u0000k\u0000M\u0000a\u0000n\u0000a\u0000g\u0000e\u0000r\u0000\r\u0000 \u0000",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhinavm07/taskManager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abhinavm07/taskManager/issues"
+  },
+  "homepage": "https://github.com/abhinavm07/taskManager#readme"
 }
