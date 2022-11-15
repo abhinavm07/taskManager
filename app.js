@@ -4,13 +4,14 @@ const app = express();
 
 const tasks = require("./routes/tasks");
 
+app.use(express.json());
+
 const port = 3000;
 
 // app.use(express.static("./public"));
 
 //routes
 app.get("/hello", (req, res) => {
-  res.status(200).json({ success: true, data: "Hello There" });
   console.log("Hello There");
 });
 
