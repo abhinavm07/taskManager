@@ -2,9 +2,11 @@ const express = require("express");
 
 const app = express();
 
+const db = require("./db/connect"); // yo db sanga connect gareko bhayo jun chai tyo path ma xa
+
 const tasks = require("./routes/tasks");
 
-app.use(express.json());
+app.use(express.json()); //esle json parse garxaa
 
 const port = 3000;
 
