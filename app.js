@@ -22,3 +22,5 @@ app.use("/api/v1/tasks", tasks);
 app.listen(port, () => {
   console.log(`And We're LIVE !`);
 });
+
+console.log("And We're Live!");
