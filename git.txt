@@ -8,6 +8,7 @@ git push -u origin main
 
 // Yo brach banayera commit garna 
 
-git checkout -b dataBase
-git add .
-git commit -m 'Cloud Database added'
+git checkout -b your-new-branch
+git add <files>
+git commit -m <message>
+git push origin your-new-branch
