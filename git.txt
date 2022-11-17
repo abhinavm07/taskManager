@@ -8,7 +8,7 @@ git push -u origin main
 
 // Yo brach banayera commit garna 
 
-git checkout -b your-new-branch
+git checkout -b develop
 git add <files>
-git commit -m <message>
-git push origin your-new-branch
+git commit -m "Developping"
+git push origin develop

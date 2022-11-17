@@ -17,6 +17,10 @@ app.get("/hello", (req, res) => {
   console.log("Hello There");
 });
 
+app.get("/garoXa", (req, res) => {
+  console.log("Dhilo Bho git hanna tesaile ahile lai yo");
+});
+
 app.use("/api/v1/tasks", tasks);
 
 app.listen(port, () => {
