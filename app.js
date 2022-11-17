@@ -6,7 +6,7 @@ const db = require("./db/connect"); // yo db sanga connect gareko bhayo jun chai
 
 const tasks = require("./routes/tasks");
 
-app.use(express.json()); //esle json parse garxaa
+app.use(express.json()); //esle json file tanna diyeko bhayo
 
 const port = 3000;
 

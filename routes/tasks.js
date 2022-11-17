@@ -8,12 +8,12 @@ const {
   getTask,
   updateTask,
   deleteTask,
-} = require("../controller/logic");
+} = require("../controller/logic"); //yini haru ko logic sav controller/logic ma xa
 
-router.get("/", firstTask);
-router.post("/", createTask);
-router.get("/:id", getTask);
-router.patch("/:id", updateTask);
-router.delete("/:id", deleteTask);
+router.get("/", firstTask); //esle server bata data tannye bho
+router.post("/", createTask); //esle data server ma falney bho
+router.get("/:id", getTask); //esle euta matra specific data tannye bho
+router.patch("/:id", updateTask); //esle update garney bho data
+router.delete("/:id", deleteTask); //esle data delete garney bho
 
 module.exports = router;
