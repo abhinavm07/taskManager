@@ -2,11 +2,17 @@ const express = require("express");
 
 const app = express();
 
-const db = require("./db/connect"); // yo db sanga connect gareko bhayo jun chai tyo path ma xa
+// yo db sanga connect gareko bhayo jun chai tyo path ma xa
+
+const db = require("./db/connect");
+
+// yo env file use garna chaine package
+require("dotenv");
 
 const tasks = require("./routes/tasks");
 
-app.use(express.json()); //esle json parse garxaa
+//esle json parse garxaa
+app.use(express.json());
 
 const port = 3000;
 
@@ -19,12 +25,16 @@ app.get("/hello", (req, res) => {
 
 app.use("/api/v1/tasks", tasks);
 
+//yo database connect huna kehi samaya lagxa tesaile eslai async function banayera try catch use gareko
 const dbConnection = async () => {
-  //yo database connect huna kehi samaya lagxa tesaile eslai async function banayera
+  //if database sanga successful connection bhayo bhanye try block of code run hunxa
   try {
-    //if chalyo bhanye try block of code use garr bhanxa
-    await db(); // await le db function naaunun jel samma kuexa
-    console.log("Database Connected");
+    // await le db function naaunun jel samma kuexa    // proccess.env.variableName le chai env file ma bhako variable ko use garxa ra teslai function ma pathauxa
+    await db(process.env.mongoUrl);
+    app.listen(port, () => {
+      console.log("Database Connected");
+      console.log(`And We're LIVE !`);
+    });
   } catch (error) {
     //catch le error samatne bhayo
     return console.log(error);
@@ -32,7 +42,3 @@ const dbConnection = async () => {
 };
 
 dbConnection();
-
-app.listen(port, () => {
-  console.log(`And We're LIVE !`);
-});
