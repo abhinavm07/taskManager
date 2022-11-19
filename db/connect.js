@@ -5,8 +5,6 @@ const db = (url) => {
   mongoose
     .connect(url, {
       useNewUrlParser: true, //yo chai decription garna chaine para meters ho arey
-      useCreateIndex: true,
-      useFindAndModify: false,
       useUnifiedTopology: true,
     }) //edi connect bhayo bhanye chai then yo block of code execute garr bhaneko hoo
     .then(console.log("DB Connected"))

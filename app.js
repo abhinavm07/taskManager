@@ -7,7 +7,9 @@ const app = express();
 const db = require("./db/connect");
 
 // yo env file use garna chaine package
-require("dotenv");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const tasks = require("./routes/tasks");
 

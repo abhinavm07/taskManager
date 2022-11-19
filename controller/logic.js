@@ -1,12 +1,18 @@
+const tasks = require("../models/tasks");
+
 const firstTask = (req, res) => {
   res.status(200).json({ success: true, data: "Joe Baba" });
   console.log("Hello There");
 };
 
-const createTask = (req, res) => {
-  const { name } = req.body;
-  console.log(name, req.body);
-  res.status(200).json(name);
+// task lai asyc banayera hamle database connect huna kurxau
+const createTask = async (req, res) => {
+  //yaha database connect bhayesi schema bata payeko structure ma req.body ma bhayeko value pass garxau
+  //
+  //yo garesi hamro database ma pani data push hunxa
+  const tasksMan = await tasks.create(req.body);
+
+  res.status(200).json(tasksMan);
 };
 
 const getTask = (req, res) => {

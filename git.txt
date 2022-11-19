@@ -12,3 +12,11 @@ git checkout -b dbWithEnv
 git add .
 git commit -m "DB online using env"
 git push origin dbWithEnv
+
+
+
+//Pull first bhannye error aayo bhanye
+git fetch origin main:tmp  
+git rebase tmp
+git push origin HEAD:main  
+git branch -D tmp

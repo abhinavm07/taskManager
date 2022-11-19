@@ -1,8 +1,9 @@
 //Esle mongoose import garney bho
 const mongoose = require("mongoose");
 
+//Moongoose ma bhako Schema gives a structure to the document
 // taskSchema bhannye promise lai chai hamle database ma use hunye id haru ra tesko datatypes haru assign gardeyau
-const taskSchema = new taskSchema({
+const taskSchema = new mongoose.Schema({
   name: String,
   completed: Boolean,
 });
