@@ -1,6 +1,6 @@
 git init
 git add .
-git commit -m "simple Database added"
+git commit -m "Pushing data to the database using mongoose"
 git branch -M main
 git push -u origin main
 
