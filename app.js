@@ -9,11 +9,11 @@ const db = require("./db/connect");
 // yo env file use garna chaine package
 const dotenv = require("dotenv");
 
-dotenv.config();
+dotenv.config(); //esle error haru hatauxa
 
 const tasks = require("./routes/tasks");
 
-//esle json parse garxaa
+//esle json format ma bhako obj tanney  garxaa
 app.use(express.json());
 
 const port = 3000;
