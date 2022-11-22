@@ -8,11 +8,13 @@ const firstTask = (req, res) => {
 // task lai asyc banayera hamle database connect huna kurxau
 const createTask = async (req, res) => {
   //yaha database connect bhayesi schema bata payeko structure ma req.body ma bhayeko value pass garxau
-  //
-  //yo garesi hamro database ma pani data push hunxa
-  const tasksMan = await tasks.create(req.body);
-
-  res.status(200).json(tasksMan);
+  try {
+    //yo garesi hamro database ma pani data push hunxa
+    const tasksMaster = await task.create(req.body);
+    res.status(200).json(tasksMaster);
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
 const getTask = (req, res) => {
