@@ -7,13 +7,15 @@ const app = express();
 const db = require("./db/connect");
 
 // yo env file use garna chaine package
+//esle chai hamlai env variable banayera database sanga connect garna dinxa jasle hamro database ko  username ra password secure rakhxa
 const dotenv = require("dotenv");
 
-dotenv.config(); //esle error haru hatauxa
+//esle env ko error haru hatauxa (?)
+dotenv.config();
 
 const tasks = require("./routes/tasks");
 
-//esle json format ma bhako obj tanney  garxaa
+//esle json format ma bhako obj tanney kam garxaa
 app.use(express.json());
 
 const port = 3000;
@@ -44,3 +46,7 @@ const dbConnection = async () => {
 };
 
 dbConnection();
+
+app.listen(port, () => {
+  console.log(`And We're LIVE !`);
+});

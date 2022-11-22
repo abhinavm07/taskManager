@@ -1,5 +1,6 @@
 const express = require("express");
 
+//express ma routes haru use garna express.Router() bhannye function invoke garna parxa
 const router = express.Router();
 
 const {
