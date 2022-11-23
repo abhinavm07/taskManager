@@ -1,8 +1,16 @@
 const tasks = require("../models/tasks");
 
-const firstTask = (req, res) => {
-  res.status(200).json({ success: true, data: "Joe Baba" });
-  console.log("Hello There");
+const getAllTask = async (req, res) => {
+  try {
+    //yo find bhannye mongoose query le hamlai sav bhako data database bata tanna dinxa
+    //tasks.find() bhitra {} pass garesi bhako jati sav data database bata tanna sakinxa
+    const task = await tasks.find({});
+    res.status(200).json({ task });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
+  // res.status(200).send("Get ALL Tasks");
+  // console.log("Hello There");
 };
 
 // task lai asyc banayera hamle database connect huna kurxau
@@ -32,4 +40,4 @@ const deleteTask = (req, res) => {
   res.status(200).json({ functionName: "Delete Task!", data: id });
 };
 
-module.exports = { firstTask, createTask, getTask, updateTask, deleteTask };
+module.exports = { getAllTask, createTask, getTask, updateTask, deleteTask };

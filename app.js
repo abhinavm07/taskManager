@@ -46,7 +46,3 @@ const dbConnection = async () => {
 };
 
 dbConnection();
-
-app.listen(port, () => {
-  console.log(`And We're LIVE !`);
-});

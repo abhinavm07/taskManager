@@ -1,6 +1,6 @@
 git init
 git add .
-git commit -m "Simple Validation Added"
+git commit -m "Code Review and Documentation"
 git branch -M main
 git push -u origin main
 
