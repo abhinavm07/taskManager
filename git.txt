@@ -8,10 +8,10 @@ git push -u origin main
 
 // Yo brach banayera commit garna 
 
-git checkout -b dbWithEnv
+git checkout -b accessDataById
 git add .
-git commit -m "DB online using env"
-git push origin dbWithEnv
+git commit -m "Accessing data from data base by id"
+git push origin accessDataById
 
 
 

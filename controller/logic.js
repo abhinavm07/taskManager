@@ -25,9 +25,33 @@ const createTask = async (req, res) => {
   }
 };
 
-const getTask = (req, res) => {
-  const { id } = req.params;
-  res.status(200).json({ functionName: "Get Task!", data: id });
+//Async use garye kinaki hamro database connect huna time lagxa tesaile kurna parxa
+const getTask = async (req, res) => {
+  try {
+    //yo { id: taskID } bhaneko chai id lai naya nam diyeko matra ho tesaile attinu pardaina, req.params bhaneko ta url bata value tanya bhai halyoo
+    const { id: taskID } = req.params;
+
+    //await le value aauna kurxa
+    //
+    //tasks.findOne bhannye function le hamlai euta kunai object database bata tanna didaxa
+    //
+    // value access garna khojda chai hamle variable name :{ id: taskID } --> { _id: taskID } esari dinu parxa
+    const tasksMaster = await tasks.findOne({ _id: taskID });
+    //
+    //edi task bhetiyena bhanye task null hunxa tesaile yo tala ko function null napathauna rakheko ho
+    if (!tasksMaster) {
+      return res
+        .status(404)
+        .json({ msg: `Sorry, No Task of id: ${taskID} found!` });
+    }
+    //
+    //task bhetiyema hamile tyo task response pathauxau
+    res.status(200).json({ tasksMaster });
+    //
+    //error bhayena error catch garera error pathauxau
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
 const updateTask = (req, res) => {
