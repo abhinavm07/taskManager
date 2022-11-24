@@ -18,7 +18,7 @@ const createTask = async (req, res) => {
   //yaha database connect bhayesi schema bata payeko structure ma req.body ma bhayeko value pass garxau
   try {
     //yo garesi hamro database ma pani data push hunxa
-    const tasksMaster = await task.create(req.body);
+    const tasksMaster = await tasks.create(req.body);
     res.status(200).json(tasksMaster);
   } catch (error) {
     res.status(500).json({ msg: error });
@@ -59,9 +59,25 @@ const updateTask = (req, res) => {
   res.status(200).json({ functionName: "Update Task!", data: id });
 };
 
-const deleteTask = (req, res) => {
-  const { id } = req.params;
-  res.status(200).json({ functionName: "Delete Task!", data: id });
+//data base connect huna kurna parney huna le async function banako
+const deleteTask = async (req, res) => {
+  try {
+    //if l=confused look at line 31
+    const { id: taskID } = req.params;
+    //
+    //tasks.findByIdAndDelete le chai tyo id khojera teslai database bata delete gardaxa
+    const tasksMaster = await tasks.findByIdAndDelete({ _id: taskID });
+    if (!tasksMaster) {
+      return res
+        .status(404)
+        .json({ msg: `Sorry, No Task of id: ${taskID} found!` });
+    }
+    res
+      .status(200)
+      .json({ msg: `Task with ID of ${taskID} has been deleted sucessfully.` });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
 module.exports = { getAllTask, createTask, getTask, updateTask, deleteTask };
