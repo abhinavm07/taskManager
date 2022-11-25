@@ -70,11 +70,15 @@ const deleteTask = async (req, res) => {
     if (!tasksMaster) {
       return res
         .status(404)
-        .json({ msg: `Sorry, No Task of id: ${taskID} found!` });
+        .json({
+          msg: `Sorry, No Task of id: ${taskID} found in the database!`,
+        });
     }
     res
       .status(200)
-      .json({ msg: `Task with ID of ${taskID} has been deleted sucessfully.` });
+      .json({
+        msg: `Task with ID of ${taskID} has been deleted sucessfully from the database.`,
+      });
   } catch (error) {
     res.status(500).json({ msg: error });
   }
