@@ -54,11 +54,6 @@ const getTask = async (req, res) => {
   }
 };
 
-const updateTask = (req, res) => {
-  const { id } = req.params;
-  res.status(200).json({ functionName: "Update Task!", data: id });
-};
-
 //data base connect huna kurna parney huna le async function banako
 const deleteTask = async (req, res) => {
   try {
@@ -68,17 +63,36 @@ const deleteTask = async (req, res) => {
     //tasks.findByIdAndDelete le chai tyo id khojera teslai database bata delete gardaxa
     const tasksMaster = await tasks.findByIdAndDelete({ _id: taskID });
     if (!tasksMaster) {
-      return res
-        .status(404)
-        .json({
-          msg: `Sorry, No Task of id: ${taskID} found in the database!`,
-        });
-    }
-    res
-      .status(200)
-      .json({
-        msg: `Task with ID of ${taskID} has been deleted sucessfully from the database.`,
+      return res.status(404).json({
+        msg: `Sorry, No Task of id: ${taskID} found in the database!`,
       });
+    }
+    res.status(200).json({
+      msg: `Task with ID of ${taskID} has been deleted sucessfully from the database.`,
+    });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
+};
+
+const updateTask = async (req, res) => {
+  try {
+    const { id: taskID } = req.params;
+    const tasksMaster = await tasks.findByIdAndUpdate(
+      { _id: taskID },
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    if (!tasksMaster) {
+      return res.status(404).json({
+        msg: `Sorry, No Task of id: ${taskID} found in the database!`,
+      });
+    }
+    res.status(200).json(tasksMaster);
   } catch (error) {
     res.status(500).json({ msg: error });
   }

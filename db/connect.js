@@ -1,4 +1,6 @@
-const mongoose = require("mongoose"); //yo bhanya db lai change garney euta npm package ho
+//yo bhanya mongodb lai manipulate garna dinye euta npm package ho
+//
+const mongoose = require("mongoose");
 
 const db = (url) => {
   //esma chai mongoose bata mongodb ma connect garera connectionstring bhannye string bata db connect garr bhaneko xa
