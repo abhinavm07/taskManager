@@ -78,16 +78,21 @@ const deleteTask = async (req, res) => {
 const updateTask = async (req, res) => {
   try {
     const { id: taskID } = req.params;
+    //
+    //tasks.findByIdAndYpdate le argument ma provide gareko id lai req.body ma supply gareko data sanga update garda xaa
+    //
     const tasksMaster = await tasks.findByIdAndUpdate(
       { _id: taskID },
       req.body,
       {
-        new: true,
+        //yo third parameter le new mathlabh naya updated data return garxa bhannye  runValidator le schema ma diyiyeko validation run garera empt  value haru database ma update huna didaina
+        new: true, //true bhanye tyo chalau bhaneko
         runValidators: true,
       }
     );
 
     if (!tasksMaster) {
+      console.log("K bhayo");
       return res.status(404).json({
         msg: `Sorry, No Task of id: ${taskID} found in the database!`,
       });
