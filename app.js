@@ -20,7 +20,7 @@ app.use(express.json());
 
 const port = 3000;
 
-// app.use(express.static("./public"));
+app.use(express.static("./public"));
 
 //routes
 app.get("/hello", (req, res) => {
