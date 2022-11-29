@@ -10,6 +10,8 @@ const db = require("./db/connect");
 //esle chai hamlai env variable banayera database sanga connect garna dinxa jasle hamro database ko  username ra password secure rakhxa
 const dotenv = require("dotenv");
 
+const notFound = require("./middleware/notFound");
+
 //esle env ko error haru hatauxa (?)
 dotenv.config();
 
@@ -21,7 +23,7 @@ app.use(express.json());
 const port = 3000;
 
 app.use(express.static("./public"));
-
+app.use(notFound);
 //routes
 app.get("/hello", (req, res) => {
   console.log("Hello There");
