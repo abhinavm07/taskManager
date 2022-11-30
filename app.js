@@ -23,13 +23,14 @@ app.use(express.json());
 const port = 3000;
 
 app.use(express.static("./public"));
-app.use(notFound);
+
 //routes
 app.get("/hello", (req, res) => {
   console.log("Hello There");
 });
 
 app.use("/api/v1/tasks", tasks);
+app.use(notFound);
 
 //yo database connect huna kehi samaya lagxa tesaile eslai async function banayera try catch use gareko
 const dbConnection = async () => {

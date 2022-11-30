@@ -1,6 +1,6 @@
 git init
 git add .
-git commit -m "Code Review and Documentation"
+git commit -m "Simple Middleware Added"
 git branch -M main
 git push -u origin main
 
