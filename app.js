@@ -11,6 +11,7 @@ const db = require("./db/connect");
 const dotenv = require("dotenv");
 
 const notFound = require("./middleware/notFound");
+const errorHandler = require("./middleware/errorHandler");
 
 //esle env ko error haru hatauxa (?)
 dotenv.config();
@@ -31,6 +32,7 @@ app.get("/hello", (req, res) => {
 
 app.use("/api/v1/tasks", tasks);
 app.use(notFound);
+app.use(errorHandler);
 
 //yo database connect huna kehi samaya lagxa tesaile eslai async function banayera try catch use gareko
 const dbConnection = async () => {
