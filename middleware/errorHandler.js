@@ -1,6 +1,12 @@
 //simmple error handler for now which returns error as json as response.
-const erroMan = (err, req, res, next) => {
-  res.status(500).json({ errorDayum: err });
+const { CustomAPIError } = require("../errors/custom-error");
+const errorHandlerMiddleware = (err, req, res, next) => {
+  if (err instanceof CustomAPIError) {
+    return res.status(err.statusCode).json({ msg: err.message });
+  }
+  return res
+    .status(500)
+    .json({ msg: "Something went wrong, please try again" });
 };
 
-module.exports = erroMan;
+module.exports = errorHandlerMiddleware;
