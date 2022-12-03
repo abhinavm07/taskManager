@@ -42,7 +42,7 @@ const dbConnection = async () => {
     await db(process.env.mongoUrl);
     app.listen(port, () => {
       console.log("Database Connected");
-      console.log(`And We're LIVE !`);
+      console.log(`And We're LIVE at port ${port}!`);
     });
   } catch (error) {
     //catch le error samatne bhayo
