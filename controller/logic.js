@@ -19,7 +19,7 @@ const createTask = asyncWrapper(async (req, res) => {
 });
 
 //Async use garye kinaki hamro database connect huna time lagxa tesaile kurna parxa
-const getTask = asyncWrapper(async (req, res) => {
+const getTask = asyncWrapper(async (req, res, next) => {
   //yo { id: taskID } bhaneko chai id lai naya nam diyeko matra ho tesaile attinu pardaina, req.params bhaneko ta url bata value tanya bhai halyoo
   const { id: taskID } = req.params;
 
@@ -40,7 +40,7 @@ const getTask = asyncWrapper(async (req, res) => {
 });
 
 //data base connect huna kurna parney huna le async function banako
-const deleteTask = asyncWrapper(async (req, res) => {
+const deleteTask = asyncWrapper(async (req, res, next) => {
   //if l=confused look at line 31
   const { id: taskID } = req.params;
   //
@@ -54,7 +54,7 @@ const deleteTask = asyncWrapper(async (req, res) => {
   });
 });
 
-const updateTask = asyncWrapper(async (req, res) => {
+const updateTask = asyncWrapper(async (req, res, next) => {
   const { id: taskID } = req.params;
   //
   //tasks.findByIdAndYpdate le argument ma provide gareko id lai req.body ma supply gareko data sanga update garda xaa
@@ -66,7 +66,6 @@ const updateTask = asyncWrapper(async (req, res) => {
   });
 
   if (!tasksMaster) {
-    console.log("K bhayo");
     return next(createCustomError(`No task with id : ${taskID}`, 404));
   }
   res.status(200).json(tasksMaster);
