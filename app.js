@@ -21,7 +21,7 @@ const tasks = require("./routes/tasks");
 //esle json format ma bhako obj tanney kam garxaa
 app.use(express.json());
 
-const port = 3000;
+const port = process.env.PORT || 5000;
 
 app.use(express.static("./public"));
 
