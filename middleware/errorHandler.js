@@ -1,4 +1,4 @@
-//simmple error handler for now which returns error as json as response.
+//simmple error handler for now which returns error as json as response..
 const { CustomAPIError } = require("../errors/custom-error");
 const errorHandlerMiddleware = (err, req, res, next) => {
   if (err instanceof CustomAPIError) {

@@ -38,7 +38,7 @@ app.use(errorHandler);
 const dbConnection = async () => {
   //if database sanga successful connection bhayo bhanye try block of code run hunxa
   try {
-    // await le db function naaunun jel samma kuexa    // proccess.env.variableName le chai env file ma bhako variable ko use garxa ra teslai function ma pathauxa
+    // await le db function naaunun jel samma kuexa    // proccess.env.variableName le chai env file ma bhako variable ko use garxa ra teslai function ma pathauxa.
     await db(process.env.mongoUrl);
     app.listen(port, () => {
       console.log("Database Connected");

@@ -1,6 +1,6 @@
 const express = require("express");
 
-//express ma routes haru use garna express.Router() bhannye function invoke garna parxa
+//express ma routes haru use garna express.Router() bhannye function invoke garna parxa.
 const router = express.Router();
 
 const {
@@ -9,7 +9,7 @@ const {
   getTask,
   updateTask,
   deleteTask,
-} = require("../controller/logic"); //yini haru ko logic sav controller/logic ma xa
+} = require("../controller/logic"); //yini haru ko logic sav controller/logic ma xa.
 
 router.get("/", getAllTask); //esle server bata data tannye bho
 router.post("/", createTask); //esle data server ma falney bho

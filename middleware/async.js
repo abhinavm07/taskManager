@@ -6,7 +6,7 @@ const asyncWrapper = (asyncFn) => {
   //we use an asyncronous function here because the function takes soe time to fetch data from the thus an await is required
   return async (req, res, next) => {
     try {
-      //if we get a valid input we return the awaited asyncFn
+      //if we get a valid input we return the awaited asyncFn.
       await asyncFn(req, res, next);
     } catch (error) {
       //else we move to the next middleware passing the error as parameter

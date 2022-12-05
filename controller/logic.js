@@ -61,7 +61,7 @@ const updateTask = asyncWrapper(async (req, res, next) => {
   //
   const tasksMaster = await tasks.findByIdAndUpdate({ _id: taskID }, req.body, {
     //yo third parameter le new mathlabh naya updated data return garxa bhannye  runValidator le schema ma diyiyeko validation run garera empt  value haru database ma update huna didaina
-    new: true, //true bhanye tyo chalau bhaneko
+    new: true, //true bhanye tyo chalau bhaneko.
     runValidators: true,
   });
 

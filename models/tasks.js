@@ -1,4 +1,4 @@
-//Esle mongoose import garney bho
+//Esle mongoose import garney bho.
 const mongoose = require("mongoose");
 
 //Moongoose ma bhako Schema gives a structure to the document
