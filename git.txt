@@ -1,0 +1,22 @@
+git init
+git add .
+git commit -m "Done For Now"
+git branch -M main
+git push -u origin main
+
+
+
+// Yo brach banayera commit garna 
+
+git checkout -b updateDataById
+git add .
+git commit -m "Updating data from data base by id"
+git push origin updateDataById
+
+
+
+//Pull first bhannye error aayo bhanye
+git fetch origin main:tmp  
+git rebase tmp
+git push origin HEAD:main  
+git branch -D tmp
