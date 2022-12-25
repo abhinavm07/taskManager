@@ -16,6 +16,8 @@ const errorHandler = require("./middleware/errorHandler");
 //esle env ko error haru hatauxa (?)
 dotenv.config();
 
+require("express-async-errors");
+
 const tasks = require("./routes/tasks");
 
 //esle json format ma bhako obj tanney kam garxaa

@@ -1,6 +1,6 @@
 git init
 git add .
-git commit -m "Error Handler"
+git commit -m "Done For Now"
 git branch -M main
 git push -u origin main
 
