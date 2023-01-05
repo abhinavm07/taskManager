@@ -1,25 +1,25 @@
 const tasks = require("../models/tasks");
 
 //asyncWrapper helps us in refactoring the code by avoiding repetation of try catch blocks in controllers.
-// const asyncWrapper = require("../middleware/async");
+const asyncWrapper = require("../middleware/async");
 
 const { createCustomError } = require("../errors/custom-error");
 
-const getAllTask = async (req, res) => {
+const getAllTask = asyncWrapper(async (req, res) => {
   const task = await tasks.find({});
   res.status(200).json({ task });
-};
+});
 
 // task lai asyc banayera hamle database connect huna kurxau
-const createTask = async (req, res) => {
+const createTask = asyncWrapper(async (req, res) => {
   //yaha database connect bhayesi schema bata payeko structure ma req.body ma bhayeko value pass garxau
   //yo garesi hamro database ma pani data push hunxa
   const tasksMaster = await tasks.create(req.body);
   res.status(200).json(tasksMaster);
-};
+});
 
 //Async use garye kinaki hamro database connect huna time lagxa tesaile kurna parxa
-const getTask = async (req, res, next) => {
+const getTask = asyncWrapper(async (req, res, next) => {
   //yo { id: taskID } bhaneko chai id lai naya nam diyeko matra ho tesaile attinu pardaina, req.params bhaneko ta url bata value tanya bhai halyoo
   const { id: taskID } = req.params;
 
@@ -37,10 +37,10 @@ const getTask = async (req, res, next) => {
   //
   //task bhetiyema hamile tyo task response pathauxau
   res.status(200).json({ tasksMaster });
-};
+});
 
 //data base connect huna kurna parney huna le async function banako
-const deleteTask = async (req, res, next) => {
+const deleteTask = asyncWrapper(async (req, res, next) => {
   //if l=confused look at line 31
   const { id: taskID } = req.params;
   //
@@ -52,9 +52,9 @@ const deleteTask = async (req, res, next) => {
   res.status(200).json({
     msg: `Task with ID of ${taskID} has been deleted sucessfully from the database.`,
   });
-};
+});
 
-const updateTask = async (req, res, next) => {
+const updateTask = asyncWrapper(async (req, res, next) => {
   const { id: taskID } = req.params;
   //
   //tasks.findByIdAndYpdate le argument ma provide gareko id lai req.body ma supply gareko data sanga update garda xaa
@@ -69,6 +69,6 @@ const updateTask = async (req, res, next) => {
     return next(createCustomError(`No task with id : ${taskID}`, 404));
   }
   res.status(200).json(tasksMaster);
-};
+});
 
 module.exports = { getAllTask, createTask, getTask, updateTask, deleteTask };
