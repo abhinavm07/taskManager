@@ -20,3 +20,6 @@ git fetch origin main:tmp
 git rebase tmp
 git push origin HEAD:main  
 git branch -D tmp
+
+
+//eslai pull garesi .env ra aru file check garney bela bela harauxa
