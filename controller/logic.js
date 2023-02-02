@@ -66,7 +66,7 @@ const updateTask = asyncWrapper(async (req, res, next) => {
   });
 
   if (!tasksMaster) {
-    return next(createCustomError(`No task found with id : ${taskID}`, 404));
+    return next(createCustomError(`No task with the id : ${taskID} found`, 404));
   }
   res.status(200).json(tasksMaster);
 });
